@@ -5,6 +5,7 @@ dir = 'data'
 nrows = 3; ncols = 3
 
 xlab = 'x label here'; ylab = 'y label here'
+plotLab = letters[1:(nrows * ncols)]
 ########################################
 ## load data						  ##
 ########################################
@@ -30,13 +31,14 @@ data = lapply(files, loadFile)
 ########################################
 par(mfrow = c(nrows, ncols), mar = c(4, 4, 0.1, 0.1), oma = c(1, 1, 1, 1)) 
 
-plotScatter <- function(dat){
+plotScatter <- function(dat, lab){
 	x = dat[, 'R2']; y = dat[, 'adj_RMSE']
 	plot(x, y, pch = 19, xlab = '', ylab = '')
+	mtext(lab, side = 3, line = -2, adj = 0.1)
 	grid()
 }	
 
-lapply(data, plotScatter)
+mapply(plotScatter, data, plotLab)
 mtext(xlab, side = 1, line = -1, outer = TRUE)
 mtext(ylab, side = 2, line = -1,	outer = TRUE)
 ## Same as this:
