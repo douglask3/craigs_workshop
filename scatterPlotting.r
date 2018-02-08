@@ -34,8 +34,8 @@ par(mfrow = c(nrows, ncols), mar = c(4, 4, 0.1, 0.1), oma = c(1, 1, 1, 1))
 plotScatter <- function(dat, lab){
 	x = dat[, 'R2']; y = dat[, 'adj_RMSE']
 	plot(x, y, pch = 19, xlab = '', ylab = '')
-	mtext(lab, side = 3, line = -2, adj = 0.1)
 	grid()
+	mtext(lab, side = 3, line = -2, adj = 0.1)
 }	
 
 mapply(plotScatter, data, plotLab)
