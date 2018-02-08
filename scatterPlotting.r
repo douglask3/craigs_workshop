@@ -42,4 +42,4 @@ mapply(plotScatter, data, plotLab)
 mtext(xlab, side = 1, line = -1, outer = TRUE)
 mtext(ylab, side = 2, line = -1,	outer = TRUE)
 ## Same as this:
-# for (dat i data) plotScatter(data)
+# for (dat in 1:length(data)) plotScatter(data[[i]], plotLab[i])
