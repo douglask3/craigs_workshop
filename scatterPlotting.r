@@ -4,6 +4,7 @@
 dir = 'data'
 nrows = 3; ncols = 3
 
+xlab = 'x label here'; ylab = 'y label here'
 ########################################
 ## load data						  ##
 ########################################
@@ -20,8 +21,9 @@ loadFile <- function(file) {
 }
 
 data = lapply(files, loadFile)
+## Same as this:
 #data = c()
-# for (file in files) data = loadFile(file)
+# for (file in files) data = c(loadFile(file))
 
 ########################################
 ## plot      						  ##
@@ -30,8 +32,12 @@ par(mfrow = c(nrows, ncols), mar = c(4, 4, 0.1, 0.1), oma = c(1, 1, 1, 1))
 
 plotScatter <- function(dat){
 	x = dat[, 'R2']; y = dat[, 'adj_RMSE']
-	plot(x, y, pch = 19)
+	plot(x, y, pch = 19, xlab = '', ylab = '')
 	grid()
 }	
 
 lapply(data, plotScatter)
+mtext(xlab, side = 1, line = -1, outer = TRUE)
+mtext(ylab, side = 2, line = -1,	outer = TRUE)
+## Same as this:
+# for (dat i data) plotScatter(data)
